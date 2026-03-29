@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
+    public bool is_locked = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

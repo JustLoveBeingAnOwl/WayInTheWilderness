@@ -5,6 +5,7 @@ public class PlayerInputHandler : MonoBehaviour
 {
     public Player Player;
     public FirstPersonCamera PlayerCamera;
+    public RaycastInteract raycastInteract;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -40,6 +41,11 @@ public class PlayerInputHandler : MonoBehaviour
         {
             PlayerCamera.AdjustRotation(1);
             Player.RotateCreatureForCamera(PlayerCamera.cameraTransform);
+        }
+        if (Keyboard.current.eKey.wasPressedThisFrame)
+        {
+            raycastInteract.PerformInteractRaycast();
+            Debug.Log("E Key Pressed");
         }
         direction = PlayerCamera.cameraTransform.TransformDirection(direction);
 
