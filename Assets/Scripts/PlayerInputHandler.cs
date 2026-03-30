@@ -45,7 +45,6 @@ public class PlayerInputHandler : MonoBehaviour
         if (Keyboard.current.eKey.wasPressedThisFrame)
         {
             raycastInteract.PerformInteractRaycast();
-            Debug.Log("E Key Pressed");
         }
         direction = PlayerCamera.cameraTransform.TransformDirection(direction);
 

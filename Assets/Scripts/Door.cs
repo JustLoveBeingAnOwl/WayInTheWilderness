@@ -9,7 +9,7 @@ public class Door : MonoBehaviour
     public float OpenDistance = 3.0f;
     public bool IsLocked = false;
     public bool IsClosed = true;
-    public string key; //unused for now
+    public GameObject[] key; //unused for now
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -22,12 +22,16 @@ public class Door : MonoBehaviour
     {
 
     }
+    public void OllisionEnter(Collision collision)
+    {
+        DoorInteract();
+    }
     public void DoorInteract(){
         if (IsClosed && !IsLocked)
         {
             while (transform.position != openPos)
             {
-                transform.position += transform.right * 0.25f;
+                transform.position += 0.25f*transform.right;
             }
             IsClosed = false;
             Debug.Log("Door opened!");
@@ -36,7 +40,7 @@ public class Door : MonoBehaviour
         {
             while (transform.position != closedPos)
             {
-                transform.position -= transform.right * 0.25f;
+                transform.position -= 0.25f*transform.right;
             }
             IsClosed = true;
             Debug.Log("Door closed!");
