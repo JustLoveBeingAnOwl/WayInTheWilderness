@@ -22,6 +22,10 @@ public class RaycastInteract : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, interactDistance, interactLayers)){
             Debug.Log(hit.collider.gameObject.name + " was hit!");
+            if (hit.collider.gameObject.CompareTag("DoorTag"))
+            {
+                hit.collider.GetComponent<Door>().DoorInteract();
+            }
         }
     }
     /*void CheckForColliders()
