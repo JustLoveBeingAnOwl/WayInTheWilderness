@@ -6,7 +6,7 @@ public class Door : MonoBehaviour
 {
     private Vector3 closedPos;
     private Vector3 openPos;
-    public float OpenDistance = 3.0f;
+    public float OpenDistance = 2.0f;
     public bool IsLocked = false;
     public bool IsClosed = true;
     public GameObject[] key; //unused for now
@@ -29,19 +29,13 @@ public class Door : MonoBehaviour
     public void DoorInteract(){
         if (IsClosed && !IsLocked)
         {
-            while (transform.position != openPos)
-            {
-                transform.position += 0.25f*transform.right;
-            }
+            transform.position = openPos;
             IsClosed = false;
             Debug.Log("Door opened!");
         }
         else if (!IsLocked)
         {
-            while (transform.position != closedPos)
-            {
-                transform.position -= 0.25f*transform.right;
-            }
+            transform.position = closedPos;
             IsClosed = true;
             Debug.Log("Door closed!");
         }
