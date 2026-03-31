@@ -46,6 +46,10 @@ public class PlayerInputHandler : MonoBehaviour
         {
             raycastInteract.PerformInteractRaycast();
         }
+        if  (Mouse.current.leftButton.wasPressedThisFrame)
+        {
+            
+        }
         direction = PlayerCamera.cameraTransform.TransformDirection(direction);
 
         direction.y = 0;
