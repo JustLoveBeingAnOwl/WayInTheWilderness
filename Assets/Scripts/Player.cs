@@ -5,6 +5,7 @@ public class Player : MonoBehaviour
     public float Speed = 10f;
     [Header("Components")]
     CharacterController cc;
+    public int PistolAmmo; 
     void Awake()
     {
         cc = GetComponent<CharacterController>();
@@ -35,5 +36,10 @@ public class Player : MonoBehaviour
     public void RotateCreatureForCamera(Transform cameraTransform)
     {
         transform.rotation = cameraTransform.rotation;
+    }
+
+    public void FireWeapon()
+    {
+        
     }
 }
