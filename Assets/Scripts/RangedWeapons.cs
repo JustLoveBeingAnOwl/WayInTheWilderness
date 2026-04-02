@@ -20,4 +20,9 @@ public class RangedWeapons : MonoBehaviour
     {
         
     }
+
+    public void Shoot()
+    {
+        
+    }
 }
