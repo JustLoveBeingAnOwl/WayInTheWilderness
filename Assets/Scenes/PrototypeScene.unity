@@ -434,7 +434,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 330585546}
-  - {fileID: 1560798870}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &249208005
@@ -616,7 +615,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1560798870}
   m_Father: {fileID: 249208004}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &330585547
@@ -1876,7 +1876,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1463928157}
-  m_Father: {fileID: 249208004}
+  m_Father: {fileID: 330585546}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1619803259
 GameObject:
@@ -2339,6 +2339,7 @@ MonoBehaviour:
   RifleFullAmmo: 0
   RifleIntermediateAmmo: 0
   ShotgunAmmo: 0
+  SubmachineGunAmmo: 0
 --- !u!1001 &1810675179
 PrefabInstance:
   m_ObjectHideFlags: 0
