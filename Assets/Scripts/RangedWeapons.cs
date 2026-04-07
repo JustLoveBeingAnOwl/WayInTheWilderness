@@ -13,8 +13,11 @@ public class RangedWeapons : MonoBehaviour
     public AmmoType ammoType;
     [Header("Fire Rate")]
     public bool isAutomatic;
-
     public float rateOfFire;
+    //Animation StateMachine
+    public enum State {Idle, Shooting, Shooting_Last, Reloading, Reloading_Partial}
+    public State GunState = State.Idle;
+    protected Animator animator;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -33,10 +36,24 @@ public class RangedWeapons : MonoBehaviour
         {
             Ray ray = new Ray(transform.position, transform.forward);
             RaycastHit hit;
+
+            currentMag--;
         }
         else
         {
             return;
         }
+    }
+    public void Reload()
+    {
+        if(currentMag >= magSize)
+        {
+            return;
+        }
+        
+        int RoundsToLoad = magSize - currentMag;
+        ammoManager.ReduceAmmoAndLoad(ammoType, RoundsToLoad);
+
+
     }
 }
