@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
     [Header("Components")]
     CharacterController cc;
     public int PistolAmmo; 
+    public RangedWeapons currentGun; 
     void Awake()
     {
         cc = GetComponent<CharacterController>();
@@ -40,6 +41,10 @@ public class Player : MonoBehaviour
 
     public void FireWeapon()
     {
-        
+        currentGun.Shoot();
+    }
+    public void ReloadWeapon()
+    {
+        currentGun.Reload();
     }
 }

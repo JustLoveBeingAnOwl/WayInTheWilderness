@@ -48,7 +48,11 @@ public class PlayerInputHandler : MonoBehaviour
         }
         if  (Mouse.current.leftButton.wasPressedThisFrame)
         {
-            
+            Player.FireWeapon();
+        }
+        if (Keyboard.current.rKey.wasPressedThisFrame)
+        {
+            Player.ReloadWeapon();
         }
         direction = PlayerCamera.cameraTransform.TransformDirection(direction);
 
