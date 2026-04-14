@@ -11,6 +11,7 @@ public class RangedWeapons : MonoBehaviour
     public int magSize;
     public int currentMag;
     public AmmoType ammoType;
+    public float reloadSpeed;
     [Header("Fire Rate")]
     public bool isAutomatic;
     public float rateOfFire;
@@ -29,14 +30,20 @@ public class RangedWeapons : MonoBehaviour
     {
         
     }
-
     public void Shoot()
     {
         if (currentMag > 0)
         {
             Ray ray = new Ray(transform.position, transform.forward);
             RaycastHit hit;
-
+            if (Physics.Raycast(ray, out hit, Range)){
+                Debug.Log(hit.collider.gameObject.name + " was hit!");
+                if (hit.collider.gameObject.CompareTag("DoorTag"))
+                {
+                    hit.collider.GetComponent<Door>().DoorInteract();
+                }
+            }
+            
             currentMag--;
         }
         else
