@@ -3,17 +3,20 @@ using UnityEngine;
 public class Creature: MonoBehaviour
 {
     public string Name;
-    public int Health;
+    public int MaxHealth = 20;
+    public int CurrentHealth;
     public int Speed;
     public int Power;
     public enum State {Idle, Wandering, Chasing, Attacking}
+    public State CurrentState;
     void Start()
     {
-
+        CurrentHealth = MaxHealth;
+        CurrentState = State.Idle;
     }
 
     void Update()
     {
-
+        
     }
 }
