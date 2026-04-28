@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class AmmoPickup : Item
 {
+    public AmmoType ammoType;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
