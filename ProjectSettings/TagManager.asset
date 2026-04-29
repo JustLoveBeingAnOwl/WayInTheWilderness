@@ -6,6 +6,7 @@ TagManager:
   tags:
   - DoorTag
   - Pistol
+  - KeyTag
   layers:
   - Default
   - TransparentFX
