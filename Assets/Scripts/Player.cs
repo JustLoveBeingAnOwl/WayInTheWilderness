@@ -2,10 +2,11 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [Header("General Stats")]
+    public int Health = 20;
     public float Speed = 10f;
     [Header("Components")]
     CharacterController cc;
-    public int PistolAmmo; 
     public RangedWeapons currentGun; 
     void Awake()
     {

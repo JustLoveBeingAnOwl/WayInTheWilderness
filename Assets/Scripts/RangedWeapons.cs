@@ -38,7 +38,7 @@ public class RangedWeapons : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, Range)){
                 Debug.Log(hit.collider.gameObject.name + " was hit!");
-                if (hit.collider.gameObject.CompareTag("Creature"))
+                if (hit.collider.gameObject.CompareTag("EnemyTag"))
                 {
                     
                 }

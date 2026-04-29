@@ -9,6 +9,7 @@ public class Creature: MonoBehaviour
     public int Power;
     public enum State {Idle, Wandering, Chasing, Attacking}
     public State CurrentState;
+    public bool IsAlly = false;
     void Start()
     {
         CurrentHealth = MaxHealth;
