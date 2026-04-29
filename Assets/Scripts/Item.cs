@@ -4,7 +4,7 @@ using UnityEngine;
 public class Item : MonoBehaviour
 {
     public String Name;
-    public int Amount = 1;
+    public int Amount = 1; //Do not make t his below 1!
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

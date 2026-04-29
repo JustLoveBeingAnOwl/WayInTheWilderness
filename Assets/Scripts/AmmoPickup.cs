@@ -14,4 +14,7 @@ public class AmmoPickup : Item
     {
         
     }
+    public AmmoType getAmmoType(){
+        return ammoType;
+    }
 }
