@@ -3,11 +3,12 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [Header("General Stats")]
-    public int Health = 20;
+    public int MaxHealth = 20;
+    public int CurrentHealth = 20;
     public float Speed = 10f;
     [Header("Components")]
     CharacterController cc;
-    public RangedWeapons currentGun; 
+    public RangedWeapon currentGun; 
     void Awake()
     {
         cc = GetComponent<CharacterController>();

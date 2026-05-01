@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public class RangedWeapons : MonoBehaviour
+public class RangedWeapon : MonoBehaviour
 {
     [Header("General Info")]
-    public string weaponName;
-    
+    public string weaponNameFull;
+    public string weaponNameShort;
     PlayerAmmoManager ammoManager;
     public float Range;
     [Header("Ammo")]
