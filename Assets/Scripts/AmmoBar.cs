@@ -13,4 +13,9 @@ public class AmmoBar : MonoBehaviour
     {
         
     }
+
+    void SetAmmoBar(AmmoType ammoType, int currentAmmo, int maxAmmo)
+    {
+        
+    }
 }

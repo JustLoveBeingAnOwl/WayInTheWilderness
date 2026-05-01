@@ -26,10 +26,6 @@ public class RaycastInteract : MonoBehaviour
             {
                 hit.collider.GetComponent<Door>().DoorInteract();
             }
-            if (hit.collider.gameObject.CompareTag("ItemTag"))
-            {
-                
-            }
         }
     }
 }
