@@ -30,13 +30,14 @@ public class PlayerAmmoManager : MonoBehaviour
     }
     public int ReduceAmmoAndLoad(AmmoType ammo, int amount)
     {
+        Debug.Log(amount+" is the amount given");
         int ammoReturned = 0;
         switch (ammo)
         {
             case (AmmoType.Pistol):
-                if((PistolAmmo -= amount) > 0)
+                if((PistolAmmo - amount) > 0)
                 {
-                    ammoReturned = PistolAmmo-amount;
+                    ammoReturned = amount;
                     PistolAmmo -= amount;
                 }
                 else
@@ -44,31 +45,13 @@ public class PlayerAmmoManager : MonoBehaviour
                     ammoReturned = PistolAmmo;
                     PistolAmmo = 0;
                 }
-                return ammoReturned;
-            case (AmmoType.Revolver):
-                if((RevolverAmmo -= amount) > 0)
-                {
-                    ammoReturned = RevolverAmmo-amount;
-                    RevolverAmmo -= amount;
-                }
-                else if (RevolverAmmo > 0)
-                {
-                    ammoReturned = RevolverAmmo;
-                    RevolverAmmo = 0;
-                }
-                return ammoReturned;
-            case (AmmoType.RifleFull):
-                if((RifleFullAmmo -= amount) > 0)
-                {
-                    
-                }
+                Debug.Log(ammoReturned+" is the amount to return");
                 return ammoReturned;
             default:
                 //The only place this function is called is in gun's scripts, but this is a default fallback to return 0 anyway.
                 return ammoReturned;
         }
     }
-    //TODO: add it for the other ammo types
     public void AddAmmo(AmmoType ammo, int amount)
     {
         switch (ammo)
@@ -82,5 +65,21 @@ public class PlayerAmmoManager : MonoBehaviour
                 PistolAmmo += amount;
                 return;
         }
+    }
+    
+    public bool HasAmmo(AmmoType ammo)
+    {
+        switch (ammo)
+        {
+            case(AmmoType.Pistol):
+                if(PistolAmmo > 0)
+                    return true;
+                return false;
+            case(AmmoType.Shotgun):
+                if(ShotgunAmmo > 0)
+                    return true;
+                return false;
+        }
+        return false;
     }
 }

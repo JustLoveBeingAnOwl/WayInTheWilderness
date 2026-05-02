@@ -3,9 +3,8 @@ using UnityEngine;
 public class RangedWeapon : MonoBehaviour
 {
     [Header("General Info")]
-    public string weaponNameFull;
-    public string weaponNameShort;
-    PlayerAmmoManager ammoManager;
+    public string weaponName;
+    public PlayerAmmoManager ammoManager;
     public float Range;
     [Header("Ammo")]
     public int magSize;
@@ -59,8 +58,10 @@ public class RangedWeapon : MonoBehaviour
         }
         
         int RoundsToLoad = magSize - currentMag;
-        ammoManager.ReduceAmmoAndLoad(ammoType, RoundsToLoad);
-
-
+        Debug.Log(RoundsToLoad+" is to load!");
+        if(ammoManager.HasAmmo(ammoType))
+        {
+            currentMag += ammoManager.ReduceAmmoAndLoad(ammoType, RoundsToLoad);
+        }
     }
 }

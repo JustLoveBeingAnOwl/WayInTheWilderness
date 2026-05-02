@@ -1,7 +1,10 @@
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class AmmoBar : MonoBehaviour
 {
+    public TextMeshProUGUI ammoText; 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -14,8 +17,9 @@ public class AmmoBar : MonoBehaviour
         
     }
 
-    void SetAmmoBar(AmmoType ammoType, int currentAmmo, int maxAmmo)
+    public void SetAmmoBar(RangedWeapon currentWeapon)
     {
-        
+        ammoText.text = currentWeapon.weaponName + "\n" + "Magazine: "+
+        currentWeapon.currentMag.ToString() + " / " +currentWeapon.magSize.ToString();
     }
 }

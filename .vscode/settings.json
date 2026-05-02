@@ -67,5 +67,5 @@
         "*.sln": "*.csproj",
         "*.slnx": "*.csproj"
     },
-    "dotnet.defaultSolution": "WayInTheWilderness.slnx"
+    "dotnet.defaultSolution": "WayintheWilderness.slnx"
 }
