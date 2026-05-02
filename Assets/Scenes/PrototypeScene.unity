@@ -971,6 +971,62 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b478a7d4400f96f43864d243c6f1f944, type: 3}
+--- !u!1 &455788278
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 455788280}
+  - component: {fileID: 455788279}
+  m_Layer: 0
+  m_Name: PlayerAmmoManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &455788279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 455788278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5308d1ea8f6309b47bd22489f4fe18f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerAmmoManager
+  MaxPistol: 100
+  MaxRevolver: 60
+  MaxRifleFull: 70
+  MaxRifleIntermediate: 120
+  MaxShotgun: 80
+  MaxSMG: 150
+  PistolAmmo: 32
+  RevolverAmmo: 0
+  RifleFullAmmo: 0
+  RifleIntermediateAmmo: 0
+  ShotgunAmmo: 0
+  SubmachineGunAmmo: 0
+--- !u!4 &455788280
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 455788278}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2.004, y: -0.50000024, z: -9.808}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1779134387}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &481199086
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2237,8 +2293,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96b210d40eab9b34ab748631e3ef99f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RangedWeapons
-  weaponNameFull: FN Model 1903
-  weaponNameShort: MLE1903
+  weaponName: FN Model 1903
+  ammoManager: {fileID: 455788279}
   Range: 35
   magSize: 8
   currentMag: 8
@@ -2890,7 +2946,8 @@ Transform:
   m_LocalPosition: {x: -2.004, y: 0.50000024, z: 9.808}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 455788280}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1779134388
@@ -3884,6 +3941,10 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 1632785025}
+    - target: {fileID: 212992086971494182, guid: e5f646fd2404aad46ae8374a47c3da66, type: 3}
+      propertyPath: playerAmmoManager
+      value: 
+      objectReference: {fileID: 455788279}
     - target: {fileID: 575183235388942944, guid: e5f646fd2404aad46ae8374a47c3da66, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
