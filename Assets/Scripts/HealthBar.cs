@@ -9,7 +9,7 @@ public class HealthBar : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        SetHealthBar(25,100);
+        
     }
 
     // Update is called once per frame
@@ -19,7 +19,7 @@ public class HealthBar : MonoBehaviour
     }
     public void SetHealthBar(int current, int max)
     {
-        healthText.text = "Health: " + current.ToString() + " of " + max.ToString();
+        healthText.text = current.ToString() + " of " + max.ToString();
         frontImage.transform.localScale = new Vector3((float)(current/max),1);
     }
 }

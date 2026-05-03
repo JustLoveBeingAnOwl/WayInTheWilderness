@@ -46,7 +46,7 @@ public class PlayerInputHandler : MonoBehaviour
         {
             raycastInteract.PerformInteractRaycast();
         }
-        if  (Mouse.current.leftButton.wasPressedThisFrame)
+        if (Keyboard.current.spaceKey.wasPressedThisFrame)
         {
             Player.FireWeapon();
         }

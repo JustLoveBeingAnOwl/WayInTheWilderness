@@ -30,7 +30,6 @@ public class PlayerAmmoManager : MonoBehaviour
     }
     public int ReduceAmmoAndLoad(AmmoType ammo, int amount)
     {
-        Debug.Log(amount+" is the amount given");
         int ammoReturned = 0;
         switch (ammo)
         {
@@ -45,7 +44,6 @@ public class PlayerAmmoManager : MonoBehaviour
                     ammoReturned = PistolAmmo;
                     PistolAmmo = 0;
                 }
-                Debug.Log(ammoReturned+" is the amount to return");
                 return ammoReturned;
             default:
                 //The only place this function is called is in gun's scripts, but this is a default fallback to return 0 anyway.

@@ -6,6 +6,7 @@ public class RangedWeapon : MonoBehaviour
     public string weaponName;
     public PlayerAmmoManager ammoManager;
     public float Range;
+    public int Damage;
     [Header("Ammo")]
     public int magSize;
     public int currentMag;
@@ -15,9 +16,13 @@ public class RangedWeapon : MonoBehaviour
     public bool isAutomatic;
     public float rateOfFire;
     //Animation StateMachine
-    public enum State {Idle, Shooting, Shooting_Last, Reloading, Reloading_Partial}
-    public State GunState = State.Idle;
+    public enum State {Idle, Shoot, Shoot_Last, Reload_Empty, Reload_Tactical}
+    private State currentState = State.Idle;
     protected Animator animator;
+    void Awake()
+    {
+        animator = GetComponent<Animator>(); 
+    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -29,39 +34,66 @@ public class RangedWeapon : MonoBehaviour
     {
         
     }
+    void RaycastFire()
+    {
+        Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, Range)){
+            Debug.Log(hit.collider.gameObject.name + " was hit!");
+            hit.collider.GetComponent<Creature>()?.TakeDamage(Damage);
+        }
+    }
     public void Shoot()
     {
-        if (currentMag > 0)
-        {
-            Ray ray = new Ray(transform.position, transform.forward);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, Range)){
-                Debug.Log(hit.collider.gameObject.name + " was hit!");
-                if (hit.collider.gameObject.CompareTag("EnemyTag"))
-                {
-                    
-                }
-            }
-            
-            currentMag--;
-        }
-        else
-        {
+        if(currentState != State.Idle)
             return;
+        if(currentMag <= 0)
+            return; 
+
+        if(currentMag == 1)
+        {
+            currentState = State.Shoot_Last;
+            animator.SetTrigger("Shoot_Last");
+        } else{
+            currentState = State.Shoot;
+            animator.SetTrigger("Shoot");
         }
+    }
+    public void OnShoot()
+    {
+        RaycastFire();
+        currentMag--;
     }
     public void Reload()
     {
-        if(currentMag >= magSize)
-        {
+        if(currentState == State.Reload_Empty || currentState == State.Reload_Tactical)
             return;
-        }
+
+        if(currentState == State.Shoot || currentState == State.Shoot_Last)
+            return;
+
+        if(currentMag >= magSize)
+            return;
         
-        int RoundsToLoad = magSize - currentMag;
-        Debug.Log(RoundsToLoad+" is to load!");
+        currentState = (currentMag == 0) ? State.Reload_Empty : State.Reload_Tactical;
         if(ammoManager.HasAmmo(ammoType))
         {
-            currentMag += ammoManager.ReduceAmmoAndLoad(ammoType, RoundsToLoad);
+            if(State.Reload_Empty == currentState)
+                animator.SetTrigger("Reload_Empty");
+            if(State.Reload_Tactical == currentState)
+                animator.SetTrigger("Reload");
         }
     }
+    public void OnReload()
+    {
+        int RoundsToLoad = magSize - currentMag;
+        currentMag += ammoManager.ReduceAmmoAndLoad(ammoType, RoundsToLoad);
+        BecomeIdle();
+    }
+
+    public void BecomeIdle() //This is mainly for the animation event triggers.
+    {
+        currentState = State.Idle;
+    }
+
 }
