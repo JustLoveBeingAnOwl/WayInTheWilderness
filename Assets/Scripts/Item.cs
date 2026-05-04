@@ -1,19 +1,10 @@
 using System;
 using UnityEngine;
 
-public class Item : MonoBehaviour
+public abstract class Item : MonoBehaviour
 {
-    public String Name;
-    public int Amount = 1; //Do not make t his below 1!
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public String itemName;
+    public bool requireInput = false;
+    public abstract void PickUp (GameObject player);
 }
+

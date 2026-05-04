@@ -19,6 +19,11 @@ public class RangedWeapon : MonoBehaviour
     public enum State {Idle, Shoot, Shoot_Last, Reload_Empty, Reload_Tactical}
     private State currentState = State.Idle;
     protected Animator animator;
+    [Header("Audio")]
+    public AudioSource audioSource;
+    public AudioClip shootSFX;
+    public AudioClip magazineSFX;
+    public AudioClip cockingSFX;
     void Awake()
     {
         animator = GetComponent<Animator>(); 
@@ -62,7 +67,17 @@ public class RangedWeapon : MonoBehaviour
     public void OnShoot()
     {
         RaycastFire();
+        audioSource.PlayOneShot(shootSFX);
         currentMag--;
+    }
+
+    public void PlayMagazineSound()
+    {
+        audioSource.PlayOneShot(magazineSFX);
+    }
+    public void PlayCockingSound()
+    {
+        audioSource.PlayOneShot(cockingSFX);
     }
     public void Reload()
     {

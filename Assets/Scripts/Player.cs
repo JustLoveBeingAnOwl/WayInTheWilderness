@@ -36,6 +36,14 @@ public class Player : MonoBehaviour
         cc.Move(direction*Speed*Time.deltaTime);
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        Item item = other.GetComponent<Item>();
+        if (item != null)
+        {
+            item.PickUp(gameObject);
+        }
+    }
     public void RotateCreatureForCamera(Transform cameraTransform)
     {
         transform.rotation = cameraTransform.rotation;
@@ -49,4 +57,5 @@ public class Player : MonoBehaviour
     {
         currentGun.Reload();
     }
+    
 }

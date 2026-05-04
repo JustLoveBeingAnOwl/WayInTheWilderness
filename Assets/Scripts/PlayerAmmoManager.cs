@@ -11,7 +11,7 @@ public class PlayerAmmoManager : MonoBehaviour
     public int MaxShotgun = 80;
     public int MaxSMG = 150;
     [Header("Ammo Counts")]
-    public int PistolAmmo = 28;
+    public int PistolAmmo = 24;
     public int RevolverAmmo = 0;
     public int RifleFullAmmo = 0;
     public int RifleIntermediateAmmo = 0;
@@ -52,15 +52,19 @@ public class PlayerAmmoManager : MonoBehaviour
     }
     public void AddAmmo(AmmoType ammo, int amount)
     {
+        Debug.Log("AmmoManager instance: " + this.GetInstanceID());
+    Debug.Log("PistolAmmo BEFORE: " + PistolAmmo);
         switch (ammo)
         {
-            case(AmmoType.Pistol):
-                if ((amount+PistolAmmo) <= MaxPistol)
+            case AmmoType.Pistol :
+                if ((amount+PistolAmmo) >= MaxPistol)
                 {
                     PistolAmmo = MaxPistol;
                     return;
                 }
                 PistolAmmo += amount;
+                return;
+            case AmmoType.Shotgun :
                 return;
         }
     }
