@@ -54,6 +54,10 @@ public class PlayerInputHandler : MonoBehaviour
         {
             Player.ReloadWeapon();
         }
+        if (Keyboard.current.escapeKey.wasPressedThisFrame)
+        {
+            GameManager.Instance.PauseToggle();
+        }
         direction = PlayerCamera.cameraTransform.TransformDirection(direction);
 
         direction.y = 0;

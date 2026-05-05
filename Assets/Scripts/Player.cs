@@ -6,6 +6,8 @@ public class Player : MonoBehaviour
     public int MaxHealth = 20;
     public int CurrentHealth = 20;
     public float Speed = 10f;
+    [Header("Inventory")]
+    
     [Header("Components")]
     CharacterController cc;
     public RangedWeapon currentGun; 
@@ -22,7 +24,10 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(CurrentHealth <= 0)
+        {
+            GameManager.Instance.InitiateLoss();
+        }
     }
 
     public void Move(Vector3 direction)

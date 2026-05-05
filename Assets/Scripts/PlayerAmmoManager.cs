@@ -52,8 +52,6 @@ public class PlayerAmmoManager : MonoBehaviour
     }
     public void AddAmmo(AmmoType ammo, int amount)
     {
-        Debug.Log("AmmoManager instance: " + this.GetInstanceID());
-    Debug.Log("PistolAmmo BEFORE: " + PistolAmmo);
         switch (ammo)
         {
             case AmmoType.Pistol :
