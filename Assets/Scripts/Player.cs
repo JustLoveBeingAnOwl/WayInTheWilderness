@@ -1,3 +1,5 @@
+using System;
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -7,10 +9,11 @@ public class Player : MonoBehaviour
     public int CurrentHealth = 20;
     public float Speed = 10f;
     [Header("Inventory")]
-    
+    public bool inRanged = true;
+    public bool inMelee = false;
+    public RangedWeapon currentGun; 
     [Header("Components")]
     CharacterController cc;
-    public RangedWeapon currentGun; 
     void Awake()
     {
         cc = GetComponent<CharacterController>();
@@ -18,7 +21,10 @@ public class Player : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        if (inRanged)
+        {
+            currentGun.UnHolster();
+        }
     }
 
     // Update is called once per frame
@@ -62,5 +68,24 @@ public class Player : MonoBehaviour
     {
         currentGun.Reload();
     }
-    
+    public void SwitchToPistol()
+    {
+        inRanged = true;
+        inMelee = false;
+
+
+        currentGun.UnHolster();
+    }
+    public void SwitchToKnife()
+    {
+        inRanged = false;
+        inMelee = true;
+
+        currentGun.Holster();
+    }
+    public void TakeDamage(int dam)
+    {
+        Debug.Log("Critter took damage!");
+        CurrentHealth -= dam;
+    }
 }

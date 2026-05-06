@@ -110,5 +110,12 @@ public class RangedWeapon : MonoBehaviour
     {
         currentState = State.Idle;
     }
-
+    public void Holster()
+    {
+        gameObject.SetActive(false);
+    }
+    public void UnHolster()
+    {
+        gameObject.SetActive(true);
+    }
 }
